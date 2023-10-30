@@ -2,13 +2,12 @@ import { Canvas, useFrame, useThree } from "@react-three/fiber";
 import { Physics, usePlane, useSphere } from "@react-three/cannon";
 import { EffectComposer, SSAO } from "@react-three/postprocessing";
 import { useTexture } from "@react-three/drei";
-import texture from "./assets/bright-blue-128.png";
 
 import "./App.css";
 
-function App() {
+function App(props) {
   function InstancedSpheres({ count = 20 }) {
-    const matcap = useTexture(texture);
+    const matcap = useTexture(props.texture);
     const { viewport } = useThree();
     const [ref] = useSphere((index) => ({
       mass: 100,
